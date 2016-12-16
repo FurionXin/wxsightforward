@@ -88,17 +88,11 @@ static WCTimeLineViewController *WCTimelineVC = nil;
     //%log((NSString *)@"IOSRE,continue build menu！");
     NSString *localPath = [[self SLSightDataItem] pathForSightData];
     %log((NSString *)@"GET PATH SUCCESS",localPath);
-    BOOL isExist =[[NSFileManager defaultManager] fileExistsAtPath:localPath];
-    //BOOL isExist = YES;
     UIMenuItem *retweetMenuItem = [[UIMenuItem alloc] initWithTitle:@"朋友圈" action:@selector(SLRetweetSight)];
     UIMenuItem *saveToDiskMenuItem = [[UIMenuItem alloc] initWithTitle:@"保存到相册" action:@selector(SLSightSaveToDisk)];
     UIMenuItem *sendToFriendsMenuItem = [[UIMenuItem alloc] initWithTitle:@"好友" action:@selector(SLSightSendToFriends)];
     UIMenuItem *copyURLMenuItem = [[UIMenuItem alloc] initWithTitle:@"复制链接" action:@selector(SLSightCopyUrl)];
-    if(isExist){
-        [menuController setMenuItems:@[retweetMenuItem,sendToFriendsMenuItem,saveToDiskMenuItem,copyURLMenuItem]];
-    }else{
-        [menuController setMenuItems:@[copyURLMenuItem]];
-    }
+    [menuController setMenuItems:@[retweetMenuItem,sendToFriendsMenuItem,saveToDiskMenuItem,copyURLMenuItem]];
     [menuController setTargetRect:CGRectZero inView:self];
     [menuController setMenuVisible:YES animated:YES];
     %log((NSString *)@"IOSRE FINISH TOUCH!");
